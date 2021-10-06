@@ -96,7 +96,9 @@ class ViewPort extends ViewportBase {
     }
 
     stopSpinner() {
-        this.$spinner.hide()
+        if (this.$spinner) {
+            this.$spinner.hide()
+        }
     }
 
     checkZoomIn() {
