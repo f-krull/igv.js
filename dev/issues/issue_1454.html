@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>issue 1454</title>
+
+</head>
+
+<body>
+
+<h1>Issue 1454</h1>
+
+
+<div id="igvDiv" style="padding-top: 10px;padding-bottom: 10px; border:1px solid lightgray"></div>
+
+
+<script type="module">
+
+    import igv from "../../js/index.js";
+
+    window.onunhandledrejection = event => {
+      console.log(`onunhandledrejection: ${event.reason}`, event.reason);
+    };
+
+    async function main() {
+
+        var options =
+            {
+                genome: "hg19",
+                locus: "chr1:1000",
+            };
+    
+        var igvDiv = document.getElementById("igvDiv");
+    
+        const browser = await igv.createBrowser(igvDiv, options);
+        browser.removeTrack("Refseq Genes")
+    }
+
+    main();
+</script>
+
+</body>
+
+</html>
